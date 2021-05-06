@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './homeComponents/Home.jsx';
 
 function App() {
+
+  return (
+    <Home/>
+  )
+
   return (
     <div className="App">
       <header className="App-header">
