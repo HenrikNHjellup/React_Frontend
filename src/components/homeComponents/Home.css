@@ -1,0 +1,12 @@
+.pieces {
+    margin-left: 3em;
+    background-color: red;
+    display: inline;
+}
+
+.store_front {
+    display: flex;
+    margin-left: 8em;
+    margin-top: 5em;
+    margin-right: 8em;
+}

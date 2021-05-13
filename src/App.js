@@ -1,31 +1,99 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from './homeComponents/Home.jsx';
+import React, {Component, setState} from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
-function App() {
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+import "./App.css";
+import "./components/headerComponents/Navbar.css";
+import About from "./components/aboutComponents/About.jsx";
+import Home from "./components/homeComponents/Home.jsx";
+import Users from "./components/userComponents/Users.jsx";
+
+const radios = [
+  { name: 'light', value: '1' },
+  { name: 'dark', value: '2' }
+];
+
+var theme = "dark";
+
+function setValue(val){
+  if(val == "dark"){
+    return "light"
+  } else {
+    return "dark"
+  }
+}
+
+const handleChange = () => {
+	this.setState({
+		on: !this.state.on
+	});
+}
+
+export default function App() {
   return (
-    <Home/>
-  )
+    <Router>
+      <Navbar bg={radios.name} expand="lg">
+        <Navbar.Brand href="/">Shoes for Moose</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/about">Link</Nav.Link>
+            <Nav.Link href="/users">Users</Nav.Link>
+            <ToggleButtonGroup type="checkbox" value={theme} onChange={handleChange}>
+              <ToggleButton value={1}>Option 1</ToggleButton>
+            </ToggleButtonGroup>
+          </Nav>
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
+      <div>
+        {/*<nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+				</nav>*/}
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+// function Home() {
+//  return <h2>Home</h2>;
+// }
+
+// function About() {
+//  return <h2>About</h2>;
+// }
+
+// function Users() {
+//   return <h2>Users</h2>;
+// }
