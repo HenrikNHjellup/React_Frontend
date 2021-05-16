@@ -7,25 +7,28 @@ import "./Home.css";
 const Home = () => {
 
   const [price, setPrice] = useState(0);
+  const [sendPrice, setSendPrice] = useState(0);
+  const [prodNum, setProdNum] = useState(0);
   var prod_price = 0;
 
   useEffect( () => {
 
-    fetch('http://127.0.0.1:5000/product/0')
+    fetch('http://127.0.0.1:5000/products')
       .then(response => response.json())
-      .then(data => setPrice(data['price'])
+      .then(data => setPrice(data[0]['price'])
       );
 
   }, [])
 
+
   function updatePrice() {
-    fetch("http://127.0.0.1:5000/product/0", {
+    fetch(`http://127.0.0.1:5000/product/${prodNum}`, {
       method: "PATCH",
       mode: "cors",
       body: JSON.stringify({
       id: 0,
       name: "Sneakers",
-      price: price,
+      price: sendPrice,
       colors: 200
       }),
       headers: {
@@ -38,16 +41,23 @@ const Home = () => {
       .then(json => console.log(json))
       }
 
+      
+
 	return(
     <div className="store_front">
       <Form>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group>
           <Form.Label>Oppdater pris</Form.Label>
           <Form.Control
             type="text"
             /*placeholder={"123"}*/
-            value={price}
-            onChange={e => setPrice(e.target.value)}
+            value={sendPrice}
+            onChange={e => setSendPrice(e.target.value)}
+          />
+          <Form.Control
+            type="text"
+            value={prodNum}
+            onChange={e => setProdNum(e.target.value)}         
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -57,28 +67,77 @@ const Home = () => {
           Send
         </Button>
       </Form>
-      <Card>
-        <Card.Body>This is some text within a card body.</Card.Body>
-      </Card>
 
       <Card>
-        <Card.Body>This is some text within a card body.</Card.Body>
-      </Card>
-
-      <Card style={{ width: '20%' }}>
-        <Card.Img variant="top" src="../../shoes/nike-revolt.jpg" />
+      <Card.Img variant="top" src="../../shoes/converse.jpg" />
         <Card.Body>
           <Card.Title>Nike Revolt</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content. Price = {price}
+            Some quick example text. Price = {price}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Read more</Button>
+          <Button variant="primary">Add to cart</Button>
         </Card.Body>
       </Card>
 
       <Card>
-        <Card.Body>This is some text within a card body.</Card.Body>
+      <Card.Img variant="top" src="../../shoes/converse.jpg" />
+        <Card.Body>
+          <Card.Title>Nike Revolt</Card.Title>
+          <Card.Text>
+            Some quick example text. Price = {price}
+          </Card.Text>
+          <Button variant="primary">Read more</Button>
+          <Button variant="primary">Add to cart</Button>
+        </Card.Body>
+      </Card>
+
+      <Card> {/*style={{ width: '20%' }}>*/}
+        <Card.Img variant="top" src="../../shoes/nike-air-max.jpg" />
+        <Card.Body>
+          <Card.Title>Nike Revolt</Card.Title>
+          <Card.Text>
+            Some quick example text. Price = {price}
+          </Card.Text>
+          <Button variant="primary">Read more</Button>
+          <Button variant="primary">Add to cart</Button>
+        </Card.Body>
+      </Card>
+
+      <Card>
+      <Card.Img variant="top" src="../../shoes/air-jordan.jpg" />
+        <Card.Body>
+          <Card.Title>Nike Revolt</Card.Title>
+          <Card.Text>
+            Some quick example text. Price = {price}
+          </Card.Text>
+          <Button variant="primary">Read more</Button>
+          <Button variant="primary">Add to cart</Button>
+        </Card.Body>
+      </Card>
+
+      <Card>
+      <Card.Img variant="top" src="../../shoes/sneaker.jpg" />
+        <Card.Body>
+          <Card.Title>Nike Revolt</Card.Title>
+          <Card.Text>
+            Some quick example text. Price = {price}
+          </Card.Text>
+          <Button variant="primary">Read more</Button>
+          <Button variant="primary">Add to cart</Button>        
+        </Card.Body>
+      </Card>
+
+      <Card>
+      <Card.Img variant="top" src="../../shoes/two-shoes.jpg" />
+        <Card.Body>
+          <Card.Title>Nike Revolt</Card.Title>
+          <Card.Text>
+            Some quick example text. Price = {price}
+          </Card.Text>
+          <Button variant="primary">Read more</Button>
+          <Button variant="primary">Add to cart</Button>
+        </Card.Body>
       </Card>
       
     </div>

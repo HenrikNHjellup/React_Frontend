@@ -9,6 +9,7 @@ import "./components/headerComponents/Navbar.css";
 import About from "./components/aboutComponents/About.jsx";
 import Home from "./components/homeComponents/Home.jsx";
 import Users from "./components/userComponents/Users.jsx";
+import NotFoundPage from "./components/notFoundComponents/NotFound";
 
 const radios = [
   { name: 'light', value: '1' },
@@ -71,14 +72,17 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route path="/users">
+          <Route exact path="/users">
             <Users />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
           </Route>
         </Switch>
       </div>
