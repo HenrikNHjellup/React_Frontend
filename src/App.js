@@ -19,7 +19,7 @@ const radios = [
 var theme = "dark";
 
 function setValue(val){
-  if(val == "dark"){
+  if(val === "dark"){
     return "light"
   } else {
     return "dark"

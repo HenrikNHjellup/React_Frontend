@@ -1,0 +1,55 @@
+.ShowProducts .card {
+    /*border: none;*/
+    border-radius: 0px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto
+  }
+  
+  
+  .ShowProducts .card:first-child {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  
+  .ShowProducts .card:last-child {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom: none;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .ShowProducts .card-title {
+      margin-left: -10px;
+      font-size: 20px;
+    }
+  
+    .ShowProducts .card-text {
+      margin-left: -10px;
+      font-size: 14px;
+    }
+  
+    .ShowProducts .likecomment {
+      font-size: 14px;
+      margin-left: -10px;
+    } 
+    
+  }
+  
+  
+  @media (max-width: 425px) {
+    .ShowProducts .likecomment {
+      float: left;
+    }
+    .ShowProducts .subtoptitle { 
+      float: unset;
+      }
+  
+  }
