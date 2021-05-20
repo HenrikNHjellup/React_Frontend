@@ -25,6 +25,16 @@
   color: white;
 }
 
+.Navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+  border-bottom-color: gray;
+}
+
 .App-link {
   color: #61dafb;
 }

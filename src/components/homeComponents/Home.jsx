@@ -12,9 +12,9 @@ const Home = () => {
   const [prodNum, setProdNum] = useState(0);
   const [apiData, setApiData] = useState([]); 
   //var apiData;
-  var prod_price = 0;
+  //var prod_price = 0;
   var checked = true
-  var loading = false
+  //var loading = false
   var showTheProds = <div></div>
 
   if(checked){
@@ -108,11 +108,6 @@ const Home = () => {
 	    </Card>*/}
 
       <div>{showTheProds}</div>
-
-      {setTimeout(function(){
-          checked = true
-          console.log(checked)
-        }, 2000)}
 
       
       

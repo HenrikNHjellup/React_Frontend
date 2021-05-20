@@ -1,12 +1,12 @@
 import React, {Component, setState} from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Navbar, Nav, Image, NavDropdown, Form, FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.css";
 import "./components/headerComponents/Navbar.css";
-import About from "./components/aboutComponents/About.jsx";
+import About from "./components/cartComponents/Cart.jsx";
 import Home from "./components/homeComponents/Home.jsx";
 import Users from "./components/userComponents/Users.jsx";
 import NotFoundPage from "./components/notFoundComponents/NotFound";
@@ -35,18 +35,21 @@ const handleChange = () => {
 export default function App() {
   return (
     <Router>
-      <Navbar bg={radios.name} expand="lg">
+      <Navbar bg={radios.name} expand="lg" className="Navbar">
         <Navbar.Brand href="/">Shoes for Moose</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about">Link</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/users">Users</Nav.Link>
-            <ToggleButtonGroup type="checkbox" value={theme} onChange={handleChange}>
-              <ToggleButton value={1}>Option 1</ToggleButton>
-            </ToggleButtonGroup>
           </Nav>
+
+          <Link to="/cart">
+            <Form inline>
+              <Image src="../../shoes/shopping-cart.png" width={40}/>
+            </Form>
+          </Link>
 
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -72,7 +75,7 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/about">
+          <Route exact path="/cart">
             <About />
           </Route>
           <Route exact path="/users">
