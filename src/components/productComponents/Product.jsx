@@ -2,18 +2,15 @@ import { render } from "@testing-library/react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { Button, Cards, Tabs, Tab, Accordion, Card, Image, Modal, Form } from "react-bootstrap";
-import "./ShowProducts.css";
+//import "./ShowProducts.css";
 
 // PREV CARD TEXT: Some quick example text. Price = 
 
 var objArr = []
 
-const ShowProducts = ({ apiData }) => {
+const Product = ({ prod_id }) => {
 
-	const [show, setShow] = useState(false);
-
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	var apiData = [];
 
 	function addToCart() {
 		fetch(`http://127.0.0.1:5000/cart/${objArr[0].id}`, {
@@ -74,4 +71,4 @@ const ShowProducts = ({ apiData }) => {
 	}
 }
 
-export default ShowProducts;
+export default Product;

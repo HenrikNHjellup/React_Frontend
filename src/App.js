@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.css";
 import "./components/headerComponents/Navbar.css";
+import Product from "./components/productComponents/Product.jsx";
 import Cart from "./components/cartComponents/Cart.jsx";
 import Home from "./components/homeComponents/Home.jsx";
 import Users from "./components/userComponents/Users.jsx";
@@ -25,6 +26,8 @@ function setValue(val){
     return "dark"
   }
 }
+
+var prod_id = 0;
 
 const handleChange = () => {
 	this.setState({
@@ -75,6 +78,9 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/product/:prod_id">
+            <Product prod_id={prod_id}/>
+          </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>

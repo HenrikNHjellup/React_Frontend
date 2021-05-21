@@ -27,8 +27,9 @@ const Cart = () => {
       <Card.Body>
         <Card.Title>{object.number}</Card.Title>
         <Card.Text>{object.color}</Card.Text>
+        <Card.Text>{object.size}</Card.Text>
         <Card.Text style={{fontWeight: "bold"}}>
-          {"$" + object.price}
+          {"$" + "69"}
         </Card.Text>
       </Card.Body>
     </Card>
