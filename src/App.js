@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.css";
 import "./components/headerComponents/Navbar.css";
-import About from "./components/cartComponents/Cart.jsx";
+import Cart from "./components/cartComponents/Cart.jsx";
 import Home from "./components/homeComponents/Home.jsx";
 import Users from "./components/userComponents/Users.jsx";
 import NotFoundPage from "./components/notFoundComponents/NotFound";
@@ -76,7 +76,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route exact path="/cart">
-            <About />
+            <Cart />
           </Route>
           <Route exact path="/users">
             <Users />
