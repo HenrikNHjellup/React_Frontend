@@ -58,18 +58,51 @@ const ShowProducts = ({ apiData }) => {
 					<Card key={object.id}>
 						<Card.Img fluid variant="top" src={`../../shoes/${object.name}.jpg`} onError={(e)=>{e.target.onerror = null; e.target.src="../../shoes/404-shoe.jpg"}}/>
 						<Card.Body>
+
 							<Card.Title>{object.name}</Card.Title>
+
 							<Card.Text>
 								{object.description}
 							</Card.Text>
+
+							<Card.Text>
+							{"Sizes available: " + object.sizes}
+							</Card.Text>
+
+							<Card.Text>
+							{"Colors available: " + object.colors}
+							</Card.Text>
+
 							<Card.Text style={{ fontWeight: "bold" }}>
 								{"$" + object.price}
 							</Card.Text>
+
 							<Link to={`product/${object.id}`}>
 							{/*prod_id = parseInt(object.id)*/}
 								<Button variant="primary">Read more</Button>
 							</Link>
-							<Button variant="primary" onClick={addToCart}>Add to cart</Button>
+
+							<Button variant="primary" onClick={handleShow}>
+        				Buy
+      				</Button>
+
+							<Modal show={show} onHide={handleClose}>
+      				  <Modal.Header closeButton>
+      				    <Modal.Title>{object.name}</Modal.Title>
+      				  </Modal.Header>
+      				  <Modal.Body>Woohoo, you're reading this text in a modal! {object.price}</Modal.Body>
+      				  <Modal.Footer>
+      				    <Button variant="secondary" onClick={handleClose}>
+      				      Close
+      				    </Button>
+      				    <Button variant="primary" onClick={handleClose}>
+      				      Save Changes
+      				    </Button>
+      				  </Modal.Footer>
+      				</Modal>
+
+							{/*<Button variant="primary" onClick={addToCart}>Add to cart</Button>*/}
+
 						</Card.Body>
 					</Card>
 				)}
