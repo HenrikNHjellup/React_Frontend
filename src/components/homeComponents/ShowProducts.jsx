@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { Button, Cards, Tabs, Tab, Accordion, Card, Image, Modal, Form } from "react-bootstrap";
 import "./ShowProducts.css";
+//import "../../shoes"
+
+// shoes: ../../public/shoes/
 
 // PREV CARD TEXT: Some quick example text. Price = 
 
@@ -44,6 +47,36 @@ const ShowProducts = ({ apiData }) => {
 		)
 	}
 
+
+
+	const tryRequire = (path) => {
+		try {
+			console.log(path)
+		 return require(`${path}`); // (`${path}`);
+		} catch (err) {
+		 return null;
+		}
+	};
+
+	function imageExist(url) {
+  	var file = new File([""],`${url}`);
+		if(file.exists()){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function returnImage(objectname){
+		if(tryRequire(`../../public/shoes/${objectname}.jpg`)){
+			console.log(objectname)
+			return objectname;
+		} else {
+			console.log(objectname)
+			return "404-shoe";
+		}
+	}
+
 	render(); {
 		console.log(apiData)
 		return (
@@ -51,7 +84,7 @@ const ShowProducts = ({ apiData }) => {
 
 				{apiData.map((object) =>
 					<Card key={object.id}>
-						<Card.Img fluid variant="top" src={`../../shoes/${object.name}.jpg`} /> {/*src="../../shoes/converse.jpg" />*/}
+						<Card.Img fluid variant="top" src={require(`../../public/shoes/${object.name}.jpg`)} onerror="this.src='../../public/shoes/404-shoe.jpg'"/> {/*  returnImage(object.name)      src="../../shoes/converse.jpg" />*/}
 						<Card.Body>
 							<Card.Title>{object.name}</Card.Title>
 							<Card.Text>
