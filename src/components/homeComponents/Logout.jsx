@@ -19,4 +19,4 @@ function LogOut(){
     );
 }
 
-export default Logout;
+export default LogOut;
