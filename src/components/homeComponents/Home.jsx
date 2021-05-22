@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Button, Cards, Tabs, Tab, Accordion, Card, Image, Modal, Form, Container } from "react-bootstrap";
 
 import "./Home.css";
-import "../../public/shoes"
+//import "../../public/shoes"
 import ShowProducts from './ShowProducts';
 
 

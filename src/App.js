@@ -11,6 +11,10 @@ import Cart from "./components/cartComponents/Cart.jsx";
 import Home from "./components/homeComponents/Home.jsx";
 import Users from "./components/userComponents/Users.jsx";
 import NotFoundPage from "./components/notFoundComponents/NotFound";
+import Login from "./components/homeComponents/Login"
+import Logout from "./components/homeComponents/Logout"
+
+export var prod_id = 0;
 
 const radios = [
   { name: 'light', value: '1' },
@@ -27,7 +31,7 @@ function setValue(val){
   }
 }
 
-var prod_id = 0;
+//var prod_id = 0;
 
 const handleChange = () => {
 	this.setState({
@@ -78,9 +82,9 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/product/:prod_id">
-            <Product prod_id={prod_id}/>
-          </Route>
+          <Route exact path="/product/:prod_id" component={Product}/>
+            {/*<Product prod_id={0}/>
+          </Route>*/}
           <Route exact path="/cart">
             <Cart />
           </Route>
