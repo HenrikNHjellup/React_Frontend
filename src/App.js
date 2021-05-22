@@ -11,6 +11,8 @@ import Cart from "./components/cartComponents/Cart.jsx";
 import Home from "./components/homeComponents/Home.jsx";
 import Users from "./components/userComponents/Users.jsx";
 import NotFoundPage from "./components/notFoundComponents/NotFound";
+import Login from "./components/homeComponents/Login"
+import Logout from "./components/homeComponents/Logout"
 
 export var prod_id = 0;
 
