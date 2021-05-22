@@ -23,11 +23,12 @@ const Cart = () => {
     
     {apiData.map((object) => 
       <Card key={object.product}>
-      <Card.Img fluid variant="top" src={`../../shoes/${object.product}.jpg`}/> {/*src="../../shoes/converse.jpg" />*/}
+      <Card.Img fluid variant="top" src={`../../shoes/${object.product}.jpg`} onError={(e)=>{e.target.onerror = null; e.target.src="../../shoes/404-shoe.jpg"}}/> {/*src="../../shoes/converse.jpg" />*/}
       <Card.Body>
-        <Card.Title>{object.number}</Card.Title>
+        <Card.Title>{object.product}</Card.Title>
         <Card.Text>{object.color}</Card.Text>
         <Card.Text>{object.size}</Card.Text>
+        <Card.Text>{object.number}</Card.Text>
         <Card.Text style={{fontWeight: "bold"}}>
           {"$" + "69"}
         </Card.Text>
