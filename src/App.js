@@ -41,12 +41,16 @@ const handleChange = () => {
 	});
 }
 */
+
+export var numItems = 0;
+
 export default function App() {
 
 
   const radios = "white";
 
   const [apiData, setApiData] = useState([]);
+  numItems = apiData.length;
     var checked = true
   
   useEffect( async() => {
@@ -60,6 +64,10 @@ export default function App() {
       .catch(err => console.log(err));
   }, [])
 
+  function updateNumItems() {
+    numItems = apiData.length;
+  }
+  numItems = apiData.length;
 
   return (
     <Router>
@@ -77,7 +85,7 @@ export default function App() {
             <Form inline>
               <Image src="../../shoes/shopping-cart.png" width={40}/>
               <Badge style={{backgroundColor: "black", fontSize: "100%", fontWeight: "normal"}}>
-                {apiData.length}
+                {numItems}
               </Badge>
             </Form>
           </Link>
