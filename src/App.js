@@ -1,6 +1,6 @@
-import React, {Component, setState} from "react";
+import React, {Component, useEffect, useState, setState} from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Navbar, Nav, Image, NavDropdown, Form, FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Navbar, Nav, Image, Badge, NavDropdown, Form, FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,6 +14,8 @@ import NotFoundPage from "./components/notFoundComponents/NotFound";
 import Login from "./components/homeComponents/Login"
 import Logout from "./components/homeComponents/Logout"
 
+
+/*
 export var prod_id = 0;
 
 const radios = [
@@ -38,8 +40,35 @@ const handleChange = () => {
 		on: !this.state.on
 	});
 }
+*/
+
+export var numItems = 0;
 
 export default function App() {
+
+
+  const radios = "white";
+
+  const [apiData, setApiData] = useState([]);
+  numItems = apiData.length;
+    var checked = true
+  
+  useEffect( async() => {
+  
+    await fetch('http://127.0.0.1:5000/carts')
+      .then(response => response.json())
+      .then(data => setApiData(data))
+      .then(() => console.log(apiData))
+      .then(() => checked = true)
+      .then((checked) => checked = true)
+      .catch(err => console.log(err));
+  }, [])
+
+  function updateNumItems() {
+    numItems = apiData.length;
+  }
+  numItems = apiData.length;
+
   return (
     <Router>
       <Navbar bg={radios.name} expand="lg" className="Navbar">
@@ -55,6 +84,9 @@ export default function App() {
           <Link to="/cart">
             <Form inline>
               <Image src="../../shoes/shopping-cart.png" width={40}/>
+              <Badge style={{backgroundColor: "black", fontSize: "100%", fontWeight: "normal"}}>
+                {numItems}
+              </Badge>
             </Form>
           </Link>
 
