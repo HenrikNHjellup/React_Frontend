@@ -31,8 +31,6 @@ const Cart = () => {
 
   var prodSum = 0;
 
-  console.log(apiData)
-
   function deleteItem() {
     fetch(`http://127.0.0.1:5000/cart/0`, {
       method: "DELETE",
