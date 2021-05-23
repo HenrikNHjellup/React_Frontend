@@ -72,6 +72,8 @@ const Cart = () => {
     <Card>
       <Card.Title>Total sum:</Card.Title>
       <Card.Text style={{fontWeight: "bold"}}>{"$" + prodSum}</Card.Text>
+      <Card.Text style={{fontWeight: "bold"}}>Special offer today: {"$" + prodSum} - {"$" + prodSum} =</Card.Text>
+      <Card.Text style={{fontWeight: "bold"}}>$0</Card.Text>
     </Card>
     </div>
   )

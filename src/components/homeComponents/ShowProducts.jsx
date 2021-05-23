@@ -126,7 +126,7 @@ const ShowProducts = ({ apiData }) => {
 							<Form>
 
 							<Form.Group>
-							  <Form.Control type="text" placeholder="Number" onChange={handleProdNumSelect}/>
+							  <Form.Control type="text" placeholder="Number of pairs" onChange={handleProdNumSelect}/>
 							</Form.Group>
 
 							<Dropdown>
