@@ -1,8 +1,5 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
-//import { refreshTokenSetup } from '../utils/refreshToken';
-
-
 
 const clientId = '419129597749-5p5lqfrlidlsrgamv3v5476k9vskgq0e.apps.googleusercontent.com';
 

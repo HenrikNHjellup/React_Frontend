@@ -31,8 +31,6 @@ const Cart = () => {
 
   var prodSum = 0;
 
-  console.log(apiData)
-
   function deleteItem() {
     fetch(`http://127.0.0.1:5000/cart/0`, {
       method: "DELETE",
@@ -72,6 +70,8 @@ const Cart = () => {
     <Card>
       <Card.Title>Total sum:</Card.Title>
       <Card.Text style={{fontWeight: "bold"}}>{"$" + prodSum}</Card.Text>
+      <Card.Text style={{fontWeight: "bold"}}>Special offer today: {"$" + prodSum} - {"$" + prodSum} =</Card.Text>
+      <Card.Text style={{fontWeight: "bold"}}>$0</Card.Text>
     </Card>
     </div>
   )
