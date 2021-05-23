@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { Button, Cards, Dropdown, DropdownButton, Tabs, Tab, Accordion, Card, Image, Modal, Form } from "react-bootstrap";
 import "./ShowProducts.css";
+const {parse, stringify} = require('flatted/cjs');
 //import {updateNumItems} from "../../App.js"
 
 // PREV CARD TEXT: Some quick example text. Price = 
@@ -13,20 +14,20 @@ var objArr = []
 
 const ShowProducts = ({ apiData }) => {
 
-	const [show, setShow] = useState(false);
+	//const [show, setShow] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	//const handleClose = () => setShow(false);
+	//const handleShow = () => setShow(true);
 
 	function addToCart() {
 		confirmSale()
-		fetch(`http://127.0.0.1:5000/carts`, {
+		fetch(`http://127.0.0.1:5000/carts/`, {
 			method: "PUT",
 			mode: "cors",
 			body: JSON.stringify({
 				product: prodName,
-				price: prodPrice,
 				number: prodNum,
+				price: prodPrice,
 				size: sizeTitle,
 				color: colorTitle
 			}),
@@ -38,10 +39,32 @@ const ShowProducts = ({ apiData }) => {
 		})
 			.then(response => response.json())
 			.then(json => console.log(json))
-
-
 			window.location.reload();
 	}
+
+	function testCart() {
+		confirmSale()
+		fetch(`http://127.0.0.1:5000/carts`, {
+			method: "PUT",
+			body: JSON.stringify({
+				product: prodName,
+				number: 123,
+				price: 123,
+				size: "123",
+				color: "123"
+			}),
+			headers: {
+				"Content-Type": "application/json",
+				'Access-Control-Allow-Origin': "*",
+
+			}
+		})
+			.then(response => response.json())
+			.then(json => console.log(json))
+			window.location.reload();
+	}
+
+	//testCart()
 
 	//var objArr = []
 
@@ -97,7 +120,7 @@ const ShowProducts = ({ apiData }) => {
 							<Card.Title>{prodName = object.name}</Card.Title>
 								
 							<Card.Text>
-								{object.description}
+								{object.shortDesc}
 							</Card.Text>
 
 							<Card.Text>

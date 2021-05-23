@@ -68,13 +68,22 @@ const Product = (props) => {
 						<Card.Img fluid variant="top" src={`../../shoes/${object.name}.jpg`} onError={(e)=>{e.target.onerror = null; e.target.src="../../shoes/404-shoe.jpg"}}/> {/*src="../../shoes/converse.jpg" />*/}
 						<Card.Body>
 							<Card.Title>{object.name}</Card.Title>
+
 							<Card.Text>
-								{object.description}
+								{object.longDesc}
 							</Card.Text>
+
+							<Card.Text>
+							{"Sizes available: " + object.sizes}
+							</Card.Text>
+
+							<Card.Text>
+							{"Colors available: " + object.colors}
+							</Card.Text>
+
 							<Card.Text style={{ fontWeight: "bold" }}>
 								{"$" + object.price}
 							</Card.Text>
-							<Button variant="primary" onClick={addToCart}>Add to cart</Button>
 						</Card.Body>
 					</Card>
 
