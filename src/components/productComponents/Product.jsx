@@ -1,16 +1,10 @@
 import { render } from "@testing-library/react";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
-import { Button, Cards, Tabs, Tab, Accordion, Card, Image, Modal, Form } from "react-bootstrap";
-//import "./ShowProducts.css";
+import {Card} from "react-bootstrap";
 
-// PREV CARD TEXT: Some quick example text. Price = 
-
-var objArr = [] // { prod_id } i const Product
+var objArr = [] 
 
 const Product = (props) => {
-
-	//console.log(prod_id)
 
 	const [object, setObject] = useState([]); 
 
@@ -24,11 +18,6 @@ const Product = (props) => {
       .then(() => checked = true)
       .then((checked) => checked = true)
       .catch(err => console.log(err))
-      /*.then(
-        data => console.log(data),//setPrice(data[0]['price'])
-      )
-      .then(function(u){return u.json();})
-      .then(function(json){apiData=json})*/
       ;
 
   }, [])
@@ -55,8 +44,6 @@ const Product = (props) => {
 			.then(response => response.json())
 			.then(json => console.log(json))
 	}
-
-	//var objArr = []
 
 	render(); {
 		return (
@@ -93,38 +80,3 @@ const Product = (props) => {
 }
 
 export default Product;
-
-
-/*
-
-
-return (
-			
-
-			<div className="ShowProducts">
-
-				{apiData.map((object) =>
-					<Card key={object.id}>
-						<Card.Img fluid variant="top" src={`../../shoes/${object.name}.jpg`} /> {/*src="../../shoes/converse.jpg" />}
-						<Card.Body>
-							<Card.Title>{object.name}</Card.Title>
-							<Card.Text>
-								{object.description}
-							</Card.Text>
-							<Card.Text style={{ fontWeight: "bold" }}>
-								{"$" + object.price}
-							</Card.Text>
-							<Link to={`product/${object.id}`}>
-								<Button variant="primary">Read more</Button>
-							</Link>
-							<Button variant="primary" onClick={addToCart}>Add to cart</Button>
-						</Card.Body>
-					</Card>
-				)}
-
-
-			</div>
-		)
-
-
-*/

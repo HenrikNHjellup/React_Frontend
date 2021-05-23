@@ -3,70 +3,34 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { Button, Cards, Dropdown, DropdownButton, Tabs, Tab, Accordion, Card, Image, Modal, Form } from "react-bootstrap";
 import "./ShowProducts.css";
-const {parse, stringify} = require('flatted/cjs');
-//import {updateNumItems} from "../../App.js"
-
-// PREV CARD TEXT: Some quick example text. Price = 
-
-//import prod_id from "../../App.js";
 
 var objArr = []
 
 const ShowProducts = ({ apiData }) => {
 
-	//const [show, setShow] = useState(false);
-
-	//const handleClose = () => setShow(false);
-	//const handleShow = () => setShow(true);
-
-	function addToCart() {
+	async function addToCart(){
 		confirmSale()
-		fetch(`http://127.0.0.1:5000/carts/`, {
+		await fetch(`http://127.0.0.1:5000/carts`, {
 			method: "PUT",
 			mode: "cors",
 			body: JSON.stringify({
 				product: prodName,
-				number: prodNum,
+				number: 1,//prodNum,
 				price: prodPrice,
 				size: sizeTitle,
 				color: colorTitle
 			}),
 			headers: {
 				"Content-Type": "application/json",
-				'Access-Control-Allow-Origin': "*",
+				'Access-Control-Allow-Origin': "*"
 
 			}
 		})
 			.then(response => response.json())
 			.then(json => console.log(json))
+			.catch((error) => console.log(error))
 			window.location.reload();
 	}
-
-	function testCart() {
-		confirmSale()
-		fetch(`http://127.0.0.1:5000/carts`, {
-			method: "PUT",
-			body: JSON.stringify({
-				product: prodName,
-				number: 123,
-				price: 123,
-				size: "123",
-				color: "123"
-			}),
-			headers: {
-				"Content-Type": "application/json",
-				'Access-Control-Allow-Origin': "*",
-
-			}
-		})
-			.then(response => response.json())
-			.then(json => console.log(json))
-			window.location.reload();
-	}
-
-	//testCart()
-
-	//var objArr = []
 
 	{
 		apiData.map((object) =>
@@ -75,7 +39,7 @@ const ShowProducts = ({ apiData }) => {
 	}
 
 	function confirmSale(){
-		prodName = prompt("Please confirm product: ")
+		setProdNum(prompt("Please confirm product: "))
 		prodPrice = prompt("Please confirm price: ")
 	}
 
@@ -89,25 +53,18 @@ const ShowProducts = ({ apiData }) => {
 	const [colorTitle, setColorTitle] = useState("Color");
 
 	const handleProdNumSelect = (e) => {
-		console.log(prodNum)
-		console.log(e)
 		setProdNum(e)
 	}
 
 	const handleSizeSelect = (e) => {
-		console.log(sizeTitle)
-		console.log(e)
 		setSizeTitle(e);
 	}
 
 	const handleColorSelect = (e) => {
-		console.log(colorTitle)
-		console.log(e)
 		setColorTitle(e);
 	}
 
 	render(); {
-		console.log(apiData)
 
 		return (
 			<div className="ShowProducts">
@@ -138,13 +95,8 @@ const ShowProducts = ({ apiData }) => {
 							</Card.Text>
 
 							<Link to={`product/${object.id}`}>
-							{/*prod_id = parseInt(object.id)*/}
 								<Button variant="primary">Read more</Button>
 							</Link>
-
-							{//colorArray = object.colors.split(" ")}
-								}
-							{console.log(colorArray)}
 
 							<Form>
 
