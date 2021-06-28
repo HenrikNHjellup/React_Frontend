@@ -1,3 +1,5 @@
+# This project is the frontend of a an application that is completed with the backend: https://github.com/ArsaNou/Portfolio2
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
