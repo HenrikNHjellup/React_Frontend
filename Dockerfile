@@ -10,3 +10,4 @@ RUN npm install react-scripts@latest
 
 COPY . ./
 CMD ["npm", "start"]
+
