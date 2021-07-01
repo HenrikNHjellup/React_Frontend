@@ -1,4 +1,4 @@
-# This project is the frontend of a an application that is completed with the backend: https://github.com/ArsaNou/Portfolio2
+# This project is the frontend of a an application that is completed with the backend: https://github.com/HenrikNHjellup/Flask_Backend
 
 # Getting Started with Create React App
 
